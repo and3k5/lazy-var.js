@@ -1,6 +1,6 @@
 {
     "name": "lazy-var",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Lazy initialize values",
     "main": "./lib/lazy-var.js",
     "scripts": {
