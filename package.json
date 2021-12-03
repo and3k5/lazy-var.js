@@ -4,7 +4,8 @@
     "description": "Lazy initialize values",
     "main": "./lib/lazy-var.js",
     "scripts": {
-        "test": "jasmine"
+        "test": "jasmine",
+        "generate-docs": "cd docs && npx jsdoc2md --source ../lib/lazy-var.js"
     },
     "repository": {
         "type": "git",
@@ -22,6 +23,7 @@
     },
     "homepage": "https://github.com/and3k5/lazy-var.js#readme",
     "devDependencies": {
+        "docsify-cli": "^4.3.0",
         "jasmine": "^3.10.0"
     }
 }
