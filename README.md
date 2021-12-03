@@ -14,7 +14,7 @@ dev@dingdong:~/my-project$ npm install lazy-var
 
 ## Usage 
 
-[Try it on runkit)](https://runkit.com/embed/w6gp16njqx8f)
+[Try it on runkit](https://runkit.com/embed/w6gp16njqx8f)
 
 ```javascript
 // Setup lazy variable
