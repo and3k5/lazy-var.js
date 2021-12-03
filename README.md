@@ -26,11 +26,11 @@ var lazyData = lazy(async () => {
 
 // Later on: Retrieve the data
 
-var data = lazyData.get();
+var data = await lazyData.get();
 // outputs: "Request for data"
 // returns: whatever data from heavyMethod
 
-var data2 = lazyData.get();
+var data2 = await lazyData.get();
 // no output
 // returns: same data as data
 ```
