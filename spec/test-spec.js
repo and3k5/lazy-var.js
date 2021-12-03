@@ -67,4 +67,24 @@ describe("lazy-var", function () {
         expect(values[0]).toBe(0);
         expect(values[1]).toBe(0);
     })
+
+    it("can clear and call once again", function () {
+        var i = 0;
+        var value = lazy(() => i++);
+        var outputValue1 = value.get();
+        value.clear();
+        var outputValue2 = value.get();
+        expect(outputValue1).toBe(0);
+        expect(outputValue2).toBe(1);
+    })
+
+    it("can clear and call once again when async", async function () {
+        var i = 0;
+        var value = lazy(async () => i++);
+        var outputValue1 = await value.get();
+        await value.clear();
+        var outputValue2 = await value.get();
+        expect(outputValue1).toBe(0);
+        expect(outputValue2).toBe(1);
+    })
 })
