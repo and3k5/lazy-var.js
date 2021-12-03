@@ -1,0 +1,28 @@
+{
+    "name": "lazy-var",
+    "version": "1.0.0",
+    "description": "Lazy initialize values",
+    "main": "./lib/lazy-var.js",
+    "scripts": {
+        "test": "jasmine"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/and3k5/lazy-var.js.git"
+    },
+    "keywords": [
+        "lazy",
+        "initialize",
+        "variable"
+    ],
+    "author": "Anders K",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/and3k5/lazy-var.js/issues"
+    },
+    "homepage": "https://github.com/and3k5/lazy-var.js#readme",
+    "devDependencies": {
+        "jasmine": "^3.10.0"
+    },
+    "dependencies": {}
+}
