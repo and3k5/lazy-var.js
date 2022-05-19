@@ -1,4 +1,4 @@
-const { lazy } = require("../lib/lazy-var");
+const { lazy } = require("../lib");
 
 describe("lazy-var", function () {
 
