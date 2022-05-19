@@ -4,8 +4,13 @@
     "description": "Lazy initialize values",
     "main": "./lib/lazy-var.js",
     "scripts": {
-        "test": "jasmine",
-        "generate-docs": "cd docs && npx jsdoc2md --source ../lib/lazy-var.js"
+        "test": "npx jasmine",
+        "generate-docs": "cd docs && npx jsdoc2md --source ../lib/lazy-var.js",
+        "build": "npx webpack --mode production",
+        "lint": "npx eslint src",
+        "lint-fix": "npx eslint src --fix",
+        "prepublish": "npm run build",
+        "pretest": "npm run build"
     },
     "repository": {
         "type": "git",
@@ -23,7 +28,24 @@
     },
     "homepage": "https://github.com/and3k5/lazy-var.js#readme",
     "devDependencies": {
+        "@babel/core": "^7.12.10",
+        "@babel/plugin-proposal-export-default-from": "^7.12.1",
+        "@typescript-eslint/eslint-plugin": "^5.23.0",
+        "babel-loader": "^8.2.2",
         "docsify-cli": "^4.3.0",
-        "jasmine": "^3.10.0"
+        "electron": "^11.2.0",
+        "eslint": "^8.15.0",
+        "eslint-plugin-typescript": "^0.14.0",
+        "eslint-plugin-unused-imports": "^2.0.0",
+        "jasmine": "^3.10.0",
+        "karma": "^6.3.19",
+        "karma-chrome-launcher": "^3.1.1",
+        "karma-cli": "^2.0.0",
+        "karma-jasmine": "^5.0.0",
+        "karma-webpack": "^5.0.0",
+        "ts-loader": "^9.3.0",
+        "typescript": "^4.6.4",
+        "webpack": "^5.72.1",
+        "webpack-cli": "^4.3.1"
     }
 }
