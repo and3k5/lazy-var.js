@@ -2,7 +2,7 @@
     "name": "lazy-var",
     "version": "2.0.2",
     "description": "Lazy initialize values",
-    "main": "./lib/lazy-var.js",
+    "main": "./lib/index.js",
     "scripts": {
         "test": "npx jasmine",
         "generate-docs": "cd docs && npx jsdoc-to-markdown --configure ../jsdoc2md.json -f ../src/index.ts",

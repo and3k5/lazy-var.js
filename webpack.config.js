@@ -1,6 +1,9 @@
 const path = require('path');
 
 module.exports = function (env) {
+    /**
+     * @type {import("webpack").WebpackOptionsNormalized}
+     */
     const lib = {
         entry: "./src",
         resolve: {
@@ -21,7 +24,7 @@ module.exports = function (env) {
         },
         output: {
             path: path.resolve(__dirname, './lib'),
-            filename: 'lazy-var.js',
+            filename: 'index.js',
             library: {
                 type: "commonjs2",
             },

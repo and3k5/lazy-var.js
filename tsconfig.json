@@ -14,10 +14,10 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "declaration": true,
-        "declarationMap": true,
         "declarationDir": "lib",
         "lib": [
             "ES2020"
-        ]
-    }
+        ],
+    },
+    "exclude": ["./docs","./spec"]
 }
