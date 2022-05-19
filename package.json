@@ -10,7 +10,7 @@
         "lint": "npx eslint src",
         "lint-fix": "npx eslint src --fix",
         "prepack": "npm run build",
-        "postversion": "$(node read-version.js)"
+        "postversion": "node read-version.js | sh"
     },
     "files": [
         "lib/*",
