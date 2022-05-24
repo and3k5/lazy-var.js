@@ -8,6 +8,12 @@ describe("lazy-var", function () {
         expect(outputValue).toBe(20);
     })
 
+    it("can lazy load with args", function () {
+        var value = lazy((x) => x + 20);
+        var outputValue = value.get(10);
+        expect(outputValue).toBe(30);
+    })
+
     it("can lazy load when async", async function () {
         var value = lazy(async () => 20);
         var outputValue = await value.get();

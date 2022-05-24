@@ -32,7 +32,7 @@ export class AsyncLazy extends LazyBase {
         this.queue.push(block.promise);
         if (!this._initialized) {
             this._initialized = true;
-            this._value = this._initializer();
+            this._value = this._initializer.apply(null, arguments);
         }
 
         while (this._value instanceof Promise) {
@@ -62,7 +62,7 @@ export class SyncLazy extends LazyBase {
     get() {
         if (!this._initialized) {
             this._initialized = true;
-            this._value = this._initializer();
+            this._value = this._initializer.apply(null, arguments);
         }
 
         return this._value;
