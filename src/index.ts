@@ -3,7 +3,7 @@ import { Blocker } from "./blocker";
 abstract class LazyBase {
     protected _initializer: Function;
     protected _value: any = null;
-    protected _initialized: boolean = false;
+    protected _initialized = false;
 
     constructor(initializer: Function) {
         this._initializer = initializer;
@@ -27,7 +27,7 @@ export class AsyncLazy extends LazyBase {
         this.queue = [];
     }
     async get() {
-        var block = new Blocker<undefined>();
+        const block = new Blocker<undefined>();
         await Promise.all(this.queue);
         this.queue.push(block.promise);
         if (!this._initialized) {
@@ -43,7 +43,7 @@ export class AsyncLazy extends LazyBase {
         return this._value;
     }
     async clear() {
-        var block = new Blocker<undefined>();
+        const block = new Blocker<undefined>();
         await Promise.all(this.queue);
         this.queue.push(block.promise);
         this._initialized = false;
@@ -82,6 +82,6 @@ function isAsyncFunction(fnc: Function) {
 }
 
 export function lazy(initializer: Function) {
-    var lazy = isAsyncFunction(initializer) ? new AsyncLazy(initializer) : new SyncLazy(initializer);
+    const lazy = isAsyncFunction(initializer) ? new AsyncLazy(initializer) : new SyncLazy(initializer);
     return lazy;
 };
