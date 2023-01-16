@@ -1,11 +1,15 @@
 import { Blocker } from "./blocker";
 
-abstract class LazyBase {
-    protected _initializer: Function;
-    protected _value: any = null;
+interface Initializer<Value> {
+    (...args : any[]): Value;
+}
+
+abstract class LazyBase<Value> {
+    protected _initializer: Initializer<Value>;
+    protected _value : Value = null as unknown as Value;
     protected _initialized = false;
 
-    constructor(initializer: Function) {
+    constructor(initializer: Initializer<Value>) {
         this._initializer = initializer;
     }
     abstract get isAsync(): boolean;
@@ -17,22 +21,22 @@ abstract class LazyBase {
     }
 }
 
-export class AsyncLazy extends LazyBase {
+export class AsyncLazy<Value> extends LazyBase<Value> {
     get isAsync() {
         return true;
     }
     private queue: any[];
-    constructor(initializer: Function) {
+    constructor(initializer: Initializer<Value>) {
         super(initializer);
         this.queue = [];
     }
-    async get() {
+    async get(...args: any[]) {
         const block = new Blocker<undefined>();
         await Promise.all(this.queue);
         this.queue.push(block.promise);
         if (!this._initialized) {
             this._initialized = true;
-            this._value = this._initializer.apply(null, arguments);
+            this._value = this._initializer.apply(null, args);
         }
 
         while (this._value instanceof Promise) {
@@ -47,7 +51,7 @@ export class AsyncLazy extends LazyBase {
         await Promise.all(this.queue);
         this.queue.push(block.promise);
         this._initialized = false;
-        this._value = null;
+        this._value = null as unknown as Value;
         block.unblock(undefined);
         this.queue.splice(this.queue.indexOf(block.promise), 1);
         return this._value;
@@ -55,33 +59,34 @@ export class AsyncLazy extends LazyBase {
 }
 
 
-export class SyncLazy extends LazyBase {
+export class SyncLazy<Value> extends LazyBase<Value> {
     get isAsync(): boolean {
         return false;
     }
-    get() {
+    get(...args: any[]) {
         if (!this._initialized) {
             this._initialized = true;
-            this._value = this._initializer.apply(null, arguments);
+            this._value = this._initializer.apply(null, args);
         }
 
         return this._value;
     }
     clear() {
         this._initialized = false;
-        this._value = null;
+        this._value = null as unknown as Value;
 
         return this._value;
     }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 const AsyncFunction = (async () => { }).constructor;
 
-function isAsyncFunction(fnc: Function) {
+function isAsyncFunction<Value>(fnc: Initializer<Value>) {
     return (fnc instanceof AsyncFunction && AsyncFunction !== Function) === true;
 }
 
-export function lazy(initializer: Function) {
+export function lazy<Value>(initializer: Initializer<Value>) {
     const lazy = isAsyncFunction(initializer) ? new AsyncLazy(initializer) : new SyncLazy(initializer);
     return lazy;
-};
+}
