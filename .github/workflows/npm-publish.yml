@@ -4,8 +4,9 @@
 name: Node.js Package
 
 on:
-  release:
-    types: [released,prereleased]
+  - workflow_dispatch 
+  - release:
+      types: [released,prereleased]
 
 jobs:
   publish-npm:
