@@ -1,21 +1,25 @@
+const { execPath } = require("process");
 const { lazy } = require("../lib");
 
 describe("lazy-var", function () {
 
     it("can lazy load", function () {
         var value = lazy(() => 20);
+        expect(value.isAsync).toBe(false);
         var outputValue = value.get();
         expect(outputValue).toBe(20);
     })
 
     it("can lazy load with args", function () {
         var value = lazy((x) => x + 20);
+        expect(value.isAsync).toBe(false);
         var outputValue = value.get(10);
         expect(outputValue).toBe(30);
     })
 
     it("can lazy load when async", async function () {
         var value = lazy(async () => 20);
+        expect(value.isAsync).toBe(true);
         var outputValue = await value.get();
         expect(outputValue).toBe(20);
     })
@@ -23,6 +27,7 @@ describe("lazy-var", function () {
     it("does not call twice", function () {
         var i = 0;
         var value = lazy(() => i++);
+        expect(value.isAsync).toBe(false);
         var outputValue1 = value.get();
         var outputValue2 = value.get();
         expect(outputValue1).toBe(0);
@@ -32,6 +37,7 @@ describe("lazy-var", function () {
     it("does not call twice when async", async function () {
         var i = 0;
         var value = lazy(async () => i++);
+        expect(value.isAsync).toBe(true);
         var outputValue1 = await value.get();
         var outputValue2 = await value.get();
         expect(outputValue1).toBe(0);
@@ -47,6 +53,7 @@ describe("lazy-var", function () {
     it("can handle multiple calls", function () {
         var i = 0;
         var value = lazy(() => i++);
+        expect(value.isAsync).toBe(false);
 
         var asyncFunc = async function () {
             var v = value.get();
@@ -66,8 +73,11 @@ describe("lazy-var", function () {
             await wait(50);
             return i++
         });
+        expect(value.isAsync).toBe(true);
         var outputValue1 = value.get();
         var outputValue2 = value.get();
+        expect(outputValue1 instanceof Promise).toBe(true);
+        expect(outputValue2 instanceof Promise).toBe(true);
         await wait(50);
         var values = await Promise.all([outputValue1, outputValue2]);
         expect(values[0]).toBe(0);
@@ -77,6 +87,7 @@ describe("lazy-var", function () {
     it("can clear and call once again", function () {
         var i = 0;
         var value = lazy(() => i++);
+        expect(value.isAsync).toBe(false);
         var outputValue1 = value.get();
         value.clear();
         var outputValue2 = value.get();
@@ -87,6 +98,7 @@ describe("lazy-var", function () {
     it("can clear and call once again when async", async function () {
         var i = 0;
         var value = lazy(async () => i++);
+        expect(value.isAsync).toBe(true);
         var outputValue1 = await value.get();
         await value.clear();
         var outputValue2 = await value.get();

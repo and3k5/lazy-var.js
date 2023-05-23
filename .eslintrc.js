@@ -18,7 +18,7 @@ module.exports = {
         "no-trailing-spaces": 1,
         "indent": [1, 4],
     },
-    ignorePatterns: ["src/**/spec.js","webpack.config.js","read-version.js"],
+    ignorePatterns: ["spec/**/*-spec.js","lib/**/*","webpack.config.js","read-version.js",".eslintrc.js"],
     env: {
         browser: true,
         node: false,
