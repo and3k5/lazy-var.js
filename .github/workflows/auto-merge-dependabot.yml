@@ -15,7 +15,7 @@ jobs:
                   node-version: 24
             - run: npm ci
             - run: npm run build
-            - run: npm test:lite
+            - run: npm run test:lite
 
     automerge:
         needs: build-for-automerge
