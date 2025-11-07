@@ -20,7 +20,7 @@ jobs:
             - run: npm ci
             - run: npm run build
             - name: Install Playwright Browsers
-              run: npx playwright install
+              run: npx playwright install --with-deps
             - run: npm test
             - run: npm publish
               env:
