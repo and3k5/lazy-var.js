@@ -1,0 +1,10 @@
+{
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "downlevelIteration": true,
+        "emitDecoratorMetadata": true,
+        "lib": ["DOM", "ES2020"],
+        "target": "es2018"
+    }
+}

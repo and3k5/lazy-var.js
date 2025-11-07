@@ -1,4 +1,5 @@
 # lazy-var.js
+
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/and3k5/lazy-var.js/Node.js%20Package)
 ![npms.io (quality)](https://img.shields.io/npms-io/quality-score/lazy-var)
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/lazy-var)
@@ -9,6 +10,7 @@
 Lazy initialize values
 
 ## Idea
+
 A way to lazy-initialize data. Executes the initializer first time calling .get() and returns the same value afterwards.
 Supports both synchronous and asynchronous initializers.
 
@@ -17,18 +19,22 @@ The solution is inspired by [System.Lazy from dotnet](https://docs.microsoft.com
 ## Install
 
 ### npm
+
 [lazy-var @ npm](https://www.npmjs.com/package/lazy-var)
 
 or install with npm cli
+
 ```console
 dev@dingdong:~/my-project$ npm install lazy-var
-```  
-or yarn 
+```
+
+or yarn
+
 ```console
 dev@dingdong:~/my-project$ yarn add lazy-var
-```  
+```
 
-## Usage 
+## Usage
 
 [Try it on runkit](https://runkit.com/embed/w6gp16njqx8f)
 
@@ -39,7 +45,7 @@ import { heavyMethod } from "./lib/stuff.js";
 
 var lazyData = lazy(async () => {
     console.log("Request for data");
-    return await heavyMethod()
+    return await heavyMethod();
 });
 
 // Later on: Retrieve the data

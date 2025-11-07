@@ -1,2 +1,0 @@
-* [Home](/)
-* [Documentation](documentation.md)
