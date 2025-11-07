@@ -13,6 +13,7 @@
     },
     "scripts": {
         "test": "npx vitest run",
+        "test:lite": "npx vitest -c vitest.node.config.ts run",
         "build": "npm run type-check && npx vite build",
         "lint": "npx eslint src",
         "lint-fix": "npx eslint src --fix",

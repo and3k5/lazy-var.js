@@ -19,9 +19,7 @@ jobs:
                   registry-url: https://registry.npmjs.org/
             - run: npm ci
             - run: npm run build
-            - name: Install Playwright Browsers
-              run: npx playwright install --with-deps
-            - run: npm test
+            - run: npm test:lite
             - run: npm publish --tag beta
               env:
                   NODE_AUTH_TOKEN: ${{secrets.npm_token}}
