@@ -1,0 +1,1 @@
+import{_ as a,c as i,o as n,af as t}from"./chunks/framework.BY-E-Ojv.js";const o=JSON.parse('{"title":"lazy-var.js","description":"","frontmatter":{},"headers":[],"relativePath":"README.md","filePath":"README.md"}'),l={name:"README.md"};function e(h,s,p,k,r,d){return n(),i("div",null,[...s[0]||(s[0]=[t("",10)])])}const g=a(l,[["render",e]]);export{o as __pageData,g as default};
