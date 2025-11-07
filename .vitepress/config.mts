@@ -3,7 +3,7 @@ import { defineConfig } from "vitepress";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     srcDir: "docs",
-
+    base: "/lazy-var.js/",
     title: "lazy-var.js",
     description: "Lazy initialize values",
     themeConfig: {
