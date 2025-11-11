@@ -7,8 +7,38 @@
     "types": "./lib/types/index.d.ts",
     "exports": {
         ".": {
-            "import": "./lib/es/index.js",
-            "require": "./lib/cjs/index.js"
+            "import": {
+                "default": "./lib/es/index.js",
+                "types": "./lib/types/index.d.ts"
+            },
+            "require": {
+                "default": "./lib/cjs/index.js",
+                "types": "./lib/types/index.d.ts"
+            }
+        },
+        "./AsyncFunctionConstructor": {
+            "types": "./lib/types/AsyncFunctionConstructor.d.ts"
+        },
+        "./AsyncLazy": {
+            "types": "./lib/types/AsyncLazy.d.ts"
+        },
+        "./index": {
+            "types": "./lib/types/index.d.ts"
+        },
+        "./Initializer": {
+            "types": "./lib/types/Initializer.d.ts"
+        },
+        "./isAsyncFunction": {
+            "types": "./lib/types/isAsyncFunction.d.ts"
+        },
+        "./LazyBase": {
+            "types": "./lib/types/LazyBase.d.ts"
+        },
+        "./SyncFunctionConstructor": {
+            "types": "./lib/types/SyncFunctionConstructor.d.ts"
+        },
+        "./SyncLazy": {
+            "types": "./lib/types/SyncLazy.d.ts"
         }
     },
     "scripts": {
