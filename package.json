@@ -8,12 +8,12 @@
     "exports": {
         ".": {
             "import": {
-                "default": "./lib/es/index.js",
-                "types": "./lib/types/index.d.ts"
+                "types": "./lib/types/index.d.ts",
+                "default": "./lib/es/index.js"
             },
             "require": {
-                "default": "./lib/cjs/index.js",
-                "types": "./lib/types/index.d.ts"
+                "types": "./lib/types/index.d.ts",
+                "default": "./lib/cjs/index.js"
             }
         },
         "./AsyncFunctionConstructor": {
