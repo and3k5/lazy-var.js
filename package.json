@@ -1,6 +1,6 @@
 {
     "name": "lazy-var",
-    "version": "3.0.3-0",
+    "version": "3.0.4-0",
     "description": "Lazy initialize values",
     "main": "./lib/cjs/index.js",
     "module": "./lib/es/index.js",
